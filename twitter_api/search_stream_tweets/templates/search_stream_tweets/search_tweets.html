@@ -1,0 +1,55 @@
+{% extends 'search_stream_tweets/index.html' %}
+    {% load static %}
+    {% load staticfiles %}
+
+    {% block 'title' %}
+        <title>Search Tweets | Twitter API</title>
+    {% endblock %}
+
+    {% block 'content' %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+                    <p class="search-txt">Search Twitter</p>
+                </div>
+                <br>
+                <div class="col-md-5">
+                    <a style="float: right" href="{% url 'stream' %}" class="btn btn-default"><span class="stream-btn">Stream</span></a>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="form-inline col-md-offset-4">
+                    <input class="form-control text-center search-input" type="text" placeholder="Search Twitter" ng-model="searchQuery">
+                    <button class="btn btn-primary" ng-click="searchTweets()">Search</button>
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+            	<div class="col-md-3">
+
+            	</div>
+            	<div class="col-md-9">
+            		<div ng-repeat="tweet in tweets.statuses">
+            			<div class="col-md-5 tweet-block well well-lg">
+            				<div class="pull-left">
+            					<b>Tweeted By</b>: {$ tweet.user.screen_name $}
+            				</div>
+            				<div class="pull-right">
+            					<b>{$ tweet.created_at | limitTo:8:3  $}</b>
+            				</div>
+            				<br><br>
+            				<div>
+            					{$ tweet.text $}
+            				</div><br>
+            				<div class="bottom-content">
+            					<a href="javascript:void(0)"><span class="glyphicon glyphicon-heart"></span> {$ tweet.user.favourites_count $}</a>&nbsp;&nbsp;
+            					<a href="javascript:void(0)"><span class="glyphicon glyphicon-user"></span> {$ tweet.user.followers_count $}</a>&nbsp;&nbsp;
+            					<a href="javascript:void(0)" ng-if="tweet.user.location"><span class="glyphicon glyphicon-map-marker"> {$ tweet.user.location $}</span></a>
+            				</div>
+            			</div>
+            		</div>
+            	</div>
+            </div>
+        </div>
+    {% endblock %}

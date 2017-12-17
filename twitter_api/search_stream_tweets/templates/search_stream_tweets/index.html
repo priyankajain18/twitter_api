@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+    <html ng-app="twitterAPI">
+        <head>
+            {% block 'title' %}
+                <title>Search & Stream Twitter API's</title>
+            {% endblock %}
+
+            {% load static %}
+            {% load staticfiles %}
+
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <link type="text/css" href="{% static 'css/app.css' %}" rel="stylesheet"/>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.12/angular.min.js"></script>
+            <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/controllers/home.controller.js' %}"></script>
+
+            {% block 'extra_scripts' %}{% endblock %}
+        </head>
+
+        <body ng-controller="SearchController">
+            {% block 'content' %}
+                <p class="text-center welcome-txt">Welcome to Twitter</p>
+                <div class="button-container">
+                    <a href="{% url 'search' %}" class="btn btn-default btn-lg index-btn"><span class="search-btn">Search</span></a>
+                    <a href="{% url 'stream' %}" class="btn btn-default btn-lg index-btn"><span class="stream-btn">Stream</span></a>
+                </div>
+            {% endblock %}
+        </body>
+    </html>

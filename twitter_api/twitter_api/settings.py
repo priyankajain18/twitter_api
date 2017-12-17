@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'search_stream_tweets',
 ]
 
@@ -123,3 +124,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+ACCESS_TOKEN = "941252286235344896-VNPi3lgsfKAWGYA5WprkkElM5SlicNk"
+ACCESS_TOKEN_SECRET = "I1DxzasB4962G5OAkjWy63zfcJhkCJyTpPD91iHw0nNVa"
+CONSUMER_KEY = "dFHMziO2Jxodwv2n4dSCEVQqW"
+CONSUMER_SECRET = "5cOOsV3Cws9Zd7h1rRTPS4yBlYyHVxPASgBu2eKezwu69CLy7M"
