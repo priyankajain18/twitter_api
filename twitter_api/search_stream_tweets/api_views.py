@@ -16,7 +16,23 @@ class SearchTweets(APIView):
 
                 tweets = ""
                 query = request.GET.get("search", "")
-                if query:
-                        tweets = twitter.search.tweets(q=query, result_type='recent', lang='en')
+                user = request.GET.get("user", "")
+                description = request.GET.get("description", "")
+                location = request.GET.get("location", "")
 
-                return Response({'success': True, 'tweets': tweets})
+                if query:
+                        tweets = twitter.search.tweets(q=query, lang='en', count=100)
+
+                resulted_tweets = []
+                for tweet in tweets["statuses"]:
+                        if user or description or location:
+                                if user and user in tweet["user"]["screen_name"]:
+                                        resulted_tweets.append(tweet)
+                                if description and description in tweet["text"]:
+                                        resulted_tweets.append(tweet)
+                                if location and location in tweet["user"]["location"]:
+                                        resulted_tweets.append(tweet)
+                        else:
+                                resulted_tweets.append(tweet)
+
+                return Response({'success': True, 'tweets': resulted_tweets})

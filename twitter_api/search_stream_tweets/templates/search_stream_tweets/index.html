@@ -20,7 +20,7 @@
             {% block 'extra_scripts' %}{% endblock %}
         </head>
 
-        <body ng-controller="SearchController">
+        <body ng-controller="SearchController" id="search-controller"> 
             {% block 'content' %}
                 <p class="text-center welcome-txt">Welcome to Twitter</p>
                 <div class="button-container">
@@ -29,4 +29,6 @@
                 </div>
             {% endblock %}
         </body>
+
+        {% block 'javascript' %}{% endblock %}
     </html>

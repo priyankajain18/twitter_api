@@ -7,7 +7,7 @@
     {% endblock %}
 
     {% block 'content' %}
-        <div class="container">
+        <div class="container" ng-cloak>
             <div class="row">
                 <div class="col-md-7">
                     <p class="search-txt">Search Twitter</p>
@@ -20,17 +20,35 @@
             <br>
             <div class="row">
                 <div class="form-inline col-md-offset-4">
-                    <input class="form-control text-center search-input" type="text" placeholder="Search Twitter" ng-model="searchQuery">
+                    <input class="form-control text-center search-input" type="text" placeholder="Search Twitter" ng-model="search">
                     <button class="btn btn-primary" ng-click="searchTweets()">Search</button>
                 </div>
             </div>
             <br><br>
             <div class="row">
             	<div class="col-md-3">
-
+            		<div class="well well-lg">
+            			<!-- User -->
+            			<label for="user">User</label>
+            			<input type="text" id="user" ng-model="user" placeholder="Enter User" class="form-control"><br>
+            			<!-- User -->
+            			<!-- Description -->
+            			<label for="description">Description</label>
+            			<input type="text" id="description" ng-model="description" placeholder="Enter Description" class="form-control"><br>
+            			<!-- Description -->
+            			<!-- Location -->
+            			<label for="location">Location</label>
+            			<input type="text" id="location" ng-model="location" placeholder="Enter Location" class="form-control"><br>
+            			<!-- Location -->
+            			<!-- Submit -->
+            			<div>
+	                        <button class="btn btn-success pull-right" ng-click="searchTweets()">Apply</button>
+	                    </div><br>
+            			<!-- Submit -->
+            		</div>
             	</div>
             	<div class="col-md-9">
-            		<div ng-repeat="tweet in tweets.statuses">
+            		<div ng-repeat="tweet in tweets">
             			<div class="col-md-5 tweet-block well well-lg">
             				<div class="pull-left">
             					<b>Tweeted By</b>: {$ tweet.user.screen_name $}
@@ -52,4 +70,11 @@
             	</div>
             </div>
         </div>
+    {% endblock %}
+
+    {% block 'javascript' %}
+    	<script type="text/javascript">
+    		$(document).ready(function(){
+		    });
+    	</script>
     {% endblock %}
